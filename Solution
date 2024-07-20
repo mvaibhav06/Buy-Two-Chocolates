@@ -1,0 +1,23 @@
+class Solution {
+    public int buyChoco(int[] prices, int money) {
+        int a = Integer.MAX_VALUE;
+        int b = Integer.MAX_VALUE;
+// 1,4,2,3,9,5
+        for(int i=0; i<prices.length; i++){
+           if(a==Integer.MAX_VALUE && b==Integer.MAX_VALUE){
+                b = prices[i];
+           }else if(prices[i]>b && prices[i]<a){
+                a = prices[i];
+           }else if(prices[i]<b){
+                a = b;
+                b = prices[i];
+           }else if(prices[i]==b){
+                a = b;
+           }
+        }
+        if(a+b > money){
+            return money;
+        }
+        return money-(a+b);
+    }
+}
